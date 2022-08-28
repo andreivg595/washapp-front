@@ -1,0 +1,18 @@
+<p-menubar [model]="items" class="navbar">
+  <ng-template pTemplate="start">
+    <img src="assets/images/washing-machine.png" class="navbar__logo mr-2" />
+  </ng-template>
+  <ng-template pTemplate="end">
+    <app-button
+      [label]="'Login'"
+      [color]="buttonColor.SECONDARY"
+      class="mr-2"
+      (click)="login()"
+    ></app-button>
+    <app-button
+      [label]="'Sign Up'"
+      [color]="buttonColor.PRIMARY"
+      (click)="signUp()"
+    ></app-button>
+  </ng-template>
+</p-menubar>

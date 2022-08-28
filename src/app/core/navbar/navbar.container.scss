@@ -1,0 +1,10 @@
+.navbar {
+    &__logo{
+        transition: 0.7s;
+    
+        &:hover {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+}
