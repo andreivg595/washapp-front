@@ -1,0 +1,62 @@
+<div class="signup">
+  <form [formGroup]="form" (ngSubmit)="signUp()">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+      <input
+        type="text"
+        pInputText
+        placeholder="Name"
+        [formControl]="nameControl"
+      />
+    </div>
+
+    <div class="p-inputgroup mt-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+      <input
+        type="text"
+        pInputText
+        placeholder="Surname"
+        [formControl]="surnameControl"
+      />
+    </div>
+
+    <div class="p-inputgroup mt-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+      <input
+        type="text"
+        pInputText
+        placeholder="Username"
+        [formControl]="usernameControl"
+      />
+    </div>
+
+    <div class="p-inputgroup mt-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+      <!-- TODO: change to email -->
+      <input
+        type="text"
+        pInputText
+        placeholder="Email"
+        [formControl]="emailControl"
+      />
+    </div>
+
+    <div class="p-inputgroup mt-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+      <input
+        type="password"
+        pInputText
+        placeholder="Password"
+        [formControl]="passwordControl"
+      />
+    </div>
+
+    <app-button
+      [type]="ButtonType.SUBMIT"
+      [color]="ButtonColor.PRIMARY"
+      [label]="'Send'"
+      [disabled]="!form.valid"
+      class="signup__button w-full mt-2"
+    ></app-button>
+  </form>
+</div>

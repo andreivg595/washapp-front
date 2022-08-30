@@ -10,7 +10,7 @@ import { ButtonColor } from 'src/app/shared/components/ui/button/button.componen
 })
 export class NavbarContainer implements OnInit {
   items: MenuItem[] = [];
-  readonly buttonColor = ButtonColor;
+  readonly ButtonColor = ButtonColor;
 
   constructor(private router: Router) {}
 
@@ -32,6 +32,10 @@ export class NavbarContainer implements OnInit {
         label: 'Contact',
       },
     ]; */
+  }
+
+  home() {
+    this.router.navigate(['/']);
   }
 
   login() {

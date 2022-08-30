@@ -1,0 +1,19 @@
+<p-card
+  [header]="!employee ? 'Login' : 'Employee credentials'"
+  styleClass="auth-card"
+>
+  <app-login-form></app-login-form>
+
+  <div *ngIf="!employee" class="mt-2">
+    <small class="inline mr-1">Don't have an account?</small>
+    <a routerLink="/sign-up" routerLinkActive="active" class="auth-card__link"
+      >Sign up</a
+    >
+
+    <small
+      class="auth-card__link cursor-pointer block mt-2"
+      (click)="loginEmployee()"
+      >Sign up as employee</small
+    >
+  </div>
+</p-card>

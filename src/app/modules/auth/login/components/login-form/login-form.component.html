@@ -1,0 +1,32 @@
+<div class="login">
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+      <!-- TODO: change to email -->
+      <input
+        type="text"
+        pInputText
+        placeholder="Email"
+        [formControl]="emailControl"
+      />
+    </div>
+
+    <div class="p-inputgroup mt-2">
+      <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+      <input
+        type="password"
+        pInputText
+        placeholder="Password"
+        [formControl]="passwordControl"
+      />
+    </div>
+
+    <app-button
+      [type]="ButtonType.SUBMIT"
+      [color]="ButtonColor.PRIMARY"
+      [label]="'Send'"
+      [disabled]="!form.valid"
+      class="login__button w-full mt-2"
+    ></app-button>
+  </form>
+</div>

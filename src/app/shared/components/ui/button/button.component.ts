@@ -26,7 +26,7 @@ export enum ButtonIconPos {
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent {
-  @Input() btnType = ButtonType.BUTTON;
+  @Input() type = ButtonType.BUTTON;
   @Input() color = ButtonColor.PRIMARY;
   @Input() label = 'Button';
   @Input() icon = '';
