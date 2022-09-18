@@ -5,6 +5,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
+import { ToastModule } from 'primeng/toast';
 
 import { TableModule } from 'primeng/table';
 import { ImageModule } from 'primeng/image';
@@ -14,6 +15,7 @@ const primeNgModules = [
   ButtonModule,
   InputTextModule,
   CardModule,
+  ToastModule,
 ];
 
 @NgModule({

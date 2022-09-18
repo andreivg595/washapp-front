@@ -1,10 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import {
   ButtonColor,
   ButtonType,
@@ -15,29 +10,12 @@ import {
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnInit {
-  form!: FormGroup;
+export class LoginFormComponent {
+  @Input() form!: FormGroup;
+  @Output() readonly formEvent = new EventEmitter<FormGroup>();
 
   readonly ButtonType = ButtonType;
   readonly ButtonColor = ButtonColor;
-
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.initForm();
-  }
-
-  protected initForm(): void {
-    //TODO: email validation
-    this.form = this.fb?.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-    });
-  }
-
-  login(): void {
-    console.log(this.form.value);
-  }
 
   get emailControl(): FormControl {
     return this.form.get('email') as FormControl;

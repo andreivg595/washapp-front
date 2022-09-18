@@ -15,23 +15,28 @@ export class NavbarContainer implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    /* this.items = [
+    this.items = [
       {
         label: 'Home',
+        routerLink: '/',
       },
       {
         label: 'Services',
+        disabled: true,
       },
       {
         label: 'About us',
+        disabled: true,
       },
       {
         label: 'Options',
+        disabled: true,
       },
       {
         label: 'Contact',
+        disabled: true,
       },
-    ]; */
+    ];
   }
 
   home() {

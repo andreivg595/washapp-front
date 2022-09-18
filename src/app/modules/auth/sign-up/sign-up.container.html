@@ -1,5 +1,8 @@
 <p-card header="Sign up" styleClass="auth-card auth-card-signup">
-  <app-sign-up-form></app-sign-up-form>
+  <app-sign-up-form
+    [form]="form"
+    (formEvent)="signUp($event)"
+  ></app-sign-up-form>
 
   <div class="mt-2">
     <small class="inline mr-1">Have an account?</small>
@@ -8,3 +11,4 @@
     >
   </div>
 </p-card>
+<app-toast></app-toast>

@@ -1,0 +1,9 @@
+@import "./src/scss/global-variables.scss";
+
+.home {
+    background-image: url("../../../assets/images/laundry-banner.jpeg");
+    height: calc(100vh - $toolbar-height);
+    background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+}

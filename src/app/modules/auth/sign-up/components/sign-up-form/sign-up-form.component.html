@@ -1,5 +1,5 @@
 <div class="signup">
-  <form [formGroup]="form" (ngSubmit)="signUp()">
+  <form [formGroup]="form" (ngSubmit)="formEvent.emit(form)">
     <div class="p-inputgroup">
       <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
       <input
@@ -32,9 +32,8 @@
 
     <div class="p-inputgroup mt-2">
       <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
-      <!-- TODO: change to email -->
       <input
-        type="text"
+        type="email"
         pInputText
         placeholder="Email"
         [formControl]="emailControl"
