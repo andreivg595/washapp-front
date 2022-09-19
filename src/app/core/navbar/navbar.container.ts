@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { ButtonColor } from 'src/app/shared/components/ui/button/button.component';
+import { select, Store } from '@ngrx/store';
+import { getIsAuthenticated } from 'src/app/core/store/selectors/auth.selectors';
+import { logOut } from '../store/actions/auth.actions';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +12,11 @@ import { ButtonColor } from 'src/app/shared/components/ui/button/button.componen
   styleUrls: ['./navbar.container.scss'],
 })
 export class NavbarContainer implements OnInit {
-  items: MenuItem[] = [];
+  readonly isAuthenticated$ = this.store.pipe(select(getIsAuthenticated));
   readonly ButtonColor = ButtonColor;
+  items: MenuItem[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private readonly store: Store<any>) {}
 
   ngOnInit() {
     this.items = [
@@ -49,5 +53,10 @@ export class NavbarContainer implements OnInit {
 
   signUp() {
     this.router.navigate(['/sign-up']);
+  }
+
+  logout() {
+    this.store.dispatch(logOut());
+    this.home();
   }
 }

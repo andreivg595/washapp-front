@@ -1,10 +1,10 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ToastService } from 'src/app/shared/components/ui/toast/service/toast.service';
-import { ToastType } from 'src/app/shared/components/ui/toast/toast.component';
-import { AuthService } from '../auth.service';
+import { Store } from '@ngrx/store';
+import {
+  logInCustomer,
+  logInEmployee,
+} from 'src/app/core/store/actions/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +15,7 @@ export class LoginContainer implements OnInit {
   form!: FormGroup;
   employee = false;
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private toastService: ToastService,
-    private router: Router
-  ) {}
+  constructor(private fb: FormBuilder, private readonly store: Store<any>) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -39,29 +34,7 @@ export class LoginContainer implements OnInit {
 
   login(form: FormGroup): void {
     this.employee
-      ? this.authService.authEmployee(form.value).subscribe({
-          next: () => {
-            //this.router.navigate(['/login']);
-          },
-          error: (error: HttpErrorResponse) => {
-            if (error.status === 401) {
-              this.toastService.showToast(ToastType.ERROR, 'Wrong password');
-            } else {
-              this.toastService.showToast(ToastType.ERROR, error.error.message);
-            }
-          },
-        })
-      : this.authService.authCustomer(form.value).subscribe({
-          next: () => {
-            //this.router.navigate(['/login']);
-          },
-          error: (error: HttpErrorResponse) => {
-            if (error.status === 401) {
-              this.toastService.showToast(ToastType.ERROR, 'Wrong password');
-            } else {
-              this.toastService.showToast(ToastType.ERROR, error.error.message);
-            }
-          },
-        });
+      ? this.store.dispatch(logInEmployee({ user: form.value }))
+      : this.store.dispatch(logInCustomer({ user: form.value }));
   }
 }

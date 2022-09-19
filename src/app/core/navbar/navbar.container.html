@@ -8,16 +8,27 @@
     <h1 class="navbar__title"><span class="text-primary">Wash</span>App</h1>
   </ng-template>
   <ng-template pTemplate="end">
-    <app-button
-      [color]="ButtonColor.SECONDARY"
-      [label]="'Login'"
-      class="mr-2"
-      (click)="login()"
-    ></app-button>
-    <app-button
-      [color]="ButtonColor.PRIMARY"
-      [label]="'Sign Up'"
-      (click)="signUp()"
-    ></app-button>
+    <ng-container *ngIf="!(isAuthenticated$ | async)">
+      <app-button
+        [color]="ButtonColor.SECONDARY"
+        [label]="'Login'"
+        class="mr-2"
+        (click)="login()"
+      ></app-button>
+      <app-button
+        [color]="ButtonColor.PRIMARY"
+        [label]="'Sign Up'"
+        (click)="signUp()"
+      ></app-button>
+    </ng-container>
+
+    <ng-container *ngIf="isAuthenticated$ | async">
+      <app-button
+        [color]="ButtonColor.SECONDARY"
+        [label]="'Log out'"
+        class="mr-2"
+        (click)="logout()"
+      ></app-button>
+    </ng-container>
   </ng-template>
 </p-menubar>
