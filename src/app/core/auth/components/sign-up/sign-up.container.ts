@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { signUp } from 'src/app/core/store/actions/auth.actions';
+import { signUp } from '../../store/actions/auth.actions';
 import { Store } from '@ngrx/store';
 
 @Component({

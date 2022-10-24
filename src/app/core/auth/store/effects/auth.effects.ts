@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/modules/auth/auth.service';
+import { AuthService } from '../../service/auth.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import {
@@ -52,7 +52,7 @@ export class AuthEffects {
       switchMap(({ user }) =>
         this.authService.authCustomer(user).pipe(
           map((user) => logInCustomerSuccess({ user })),
-          tap(() => this.router.navigate(['/'])), //TODO: redirect shop
+          tap(() => this.router.navigate(['/shop'])),
           catchError((error) => {
             this.showError(error);
             return of(logInCustomerFailure({ error }));
@@ -62,13 +62,24 @@ export class AuthEffects {
     )
   );
 
+  /* readonly logInCustomerSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(logInCustomerSuccess),
+      switchMap(({ user }) =>
+      localStorage.setItem('clickCounter', clicks);
+          tap((user) => localStorage.setItem('auth', JSON.stringify(user))),
+
+      )
+    )
+  ); */
+
   readonly logInEmployee$ = createEffect(() =>
     this.actions$.pipe(
       ofType(logInEmployee),
       switchMap(({ user }) =>
         this.authService.authEmployee(user).pipe(
           map((user) => logInEmployeeSuccess({ user })),
-          tap(() => this.router.navigate(['/'])), //TODO: redirect dashboard
+          tap(() => this.router.navigate(['/dashboard'])),
           catchError((error) => {
             this.showError(error);
             return of(logInEmployeeFailure({ error }));

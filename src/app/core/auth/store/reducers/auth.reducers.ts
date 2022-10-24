@@ -9,19 +9,27 @@ import {
 
 export interface AuthState {
   isAuthenticated: boolean;
+  isEmployee: boolean;
   user: Customer | Employee | null;
 }
 
 const initialState: AuthState = {
   isAuthenticated: false,
+  isEmployee: false,
   user: null,
 };
 
 export const authReducer = createReducer(
   initialState,
-  on(logInCustomerSuccess, logInEmployeeSuccess, (state, { user }) => ({
+  on(logInCustomerSuccess, (state, { user }) => ({
     ...state,
     isAuthenticated: true,
+    user,
+  })),
+  on(logInEmployeeSuccess, (state, { user }) => ({
+    ...state,
+    isAuthenticated: true,
+    isEmployee: true,
     user,
   })),
   on(logOut, () => initialState)

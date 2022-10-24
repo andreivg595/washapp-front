@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { ButtonColor } from 'src/app/shared/components/ui/button/button.component';
 import { select, Store } from '@ngrx/store';
-import { getIsAuthenticated } from 'src/app/core/store/selectors/auth.selectors';
-import { logOut } from '../store/actions/auth.actions';
+import { getIsAuthenticated } from 'src/app/core/auth/store/selectors/auth.selectors';
+import { logOut } from '../auth/store/actions/auth.actions';
 
 @Component({
   selector: 'app-navbar',

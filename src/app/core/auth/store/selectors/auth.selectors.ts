@@ -9,3 +9,8 @@ export const getIsAuthenticated = createSelector(
   selectAuthState,
   (state) => state.isAuthenticated
 );
+
+export const getIsEmployee = createSelector(
+  selectAuthState,
+  (state) => state.isEmployee
+);
