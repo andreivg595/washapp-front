@@ -62,17 +62,6 @@ export class AuthEffects {
     )
   );
 
-  /* readonly logInCustomerSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(logInCustomerSuccess),
-      switchMap(({ user }) =>
-      localStorage.setItem('clickCounter', clicks);
-          tap((user) => localStorage.setItem('auth', JSON.stringify(user))),
-
-      )
-    )
-  ); */
-
   readonly logInEmployee$ = createEffect(() =>
     this.actions$.pipe(
       ofType(logInEmployee),
@@ -89,7 +78,7 @@ export class AuthEffects {
     )
   );
 
-  private showError(error: HttpErrorResponse): void {
+  showError(error: HttpErrorResponse): void {
     let message = '';
 
     if (error.status === 401) {
