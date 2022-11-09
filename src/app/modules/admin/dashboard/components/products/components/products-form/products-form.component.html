@@ -1,0 +1,49 @@
+<div class="product-form-container pt-4">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="formEvent.emit(form)"
+    enctype="multipart/form-data"
+  >
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input type="text" id="name" formControlName="name" pInputText />
+          <label for="name">Name</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input type="number" id="price" formControlName="price" pInputText />
+          <label for="price">Price</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input type="number" id="type" formControlName="type" pInputText />
+          <label for="type">Type</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input
+            type="file"
+            id="image"
+            class="product-form-container__image"
+            accept="image/*"
+            (change)="onFileSelected($event)"
+          />
+        </span>
+      </div>
+    </div>
+
+    <app-button
+      [type]="ButtonType.SUBMIT"
+      [color]="ButtonColor.PRIMARY"
+      [label]="'Save'"
+      class="float-right"
+    ></app-button>
+  </form>
+</div>

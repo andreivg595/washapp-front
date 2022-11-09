@@ -45,12 +45,12 @@ export const updateEmployeeFailure = createAction(
 
 export const deleteEmployee = createAction(
   '[Employee API] Delete Employee',
-  props<{ readonly id: number | undefined }>()
+  props<{ readonly id: number }>()
 );
 
 export const deleteEmployeeSuccess = createAction(
   '[Employee API] Delete Employee Success',
-  props<{ readonly id: number | undefined }>()
+  props<{ readonly id: number }>()
 );
 
 export const deleteEmployeeFailure = createAction(
@@ -58,4 +58,4 @@ export const deleteEmployeeFailure = createAction(
   props<{ readonly error: any }>()
 );
 
-export const purge = createAction('[Dashboard Page] Purge');
+export const purge = createAction('[Employees Page] Purge');

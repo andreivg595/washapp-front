@@ -1,0 +1,22 @@
+<p-toolbar>
+  <div class="p-toolbar-group-left"></div>
+  <div class="p-toolbar-group-right">
+    <app-button
+      [color]="ButtonColor.PRIMARY"
+      [label]="'Add product'"
+      (click)="add()"
+    ></app-button>
+  </div>
+</p-toolbar>
+<app-products-list
+  [products]="products$ | async"
+  (modifyEvent)="onModify($event)"
+  (deleteEvent)="onDelete($event)"
+></app-products-list>
+
+<p-dialog header="Products form" [(visible)]="displayProduct">
+  <app-products-form
+    [form]="form"
+    (formEvent)="onFormProducts($event)"
+  ></app-products-form>
+</p-dialog>

@@ -10,6 +10,8 @@ import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
 import { DialogModule } from 'primeng/dialog';
+import { FileUploadModule } from 'primeng/fileupload';
+import { DropdownModule } from 'primeng/dropdown';
 import { ImageModule } from 'primeng/image';
 
 const primeNgModules = [
@@ -22,6 +24,8 @@ const primeNgModules = [
   TableModule,
   ToolbarModule,
   DialogModule,
+  FileUploadModule,
+  DropdownModule,
 ];
 
 @NgModule({

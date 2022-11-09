@@ -21,14 +21,13 @@ export class EmployeeService {
   }
 
   updateEmployee(employee: Employee): Observable<Employee> {
-    console.log(employee);
     return this.http.put<Employee>(
       `${this.url}/employees/${employee?.id}`,
       employee
     );
   }
 
-  deleteEmployee(id: number | undefined): Observable<any> {
-    return this.http.delete(`${this.url}/employees/${id}`);
+  deleteEmployee(id: number | undefined): Observable<Employee> {
+    return this.http.delete<Employee>(`${this.url}/employees/${id}`);
   }
 }

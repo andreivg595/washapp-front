@@ -1,0 +1,23 @@
+<p-toolbar>
+  <div class="p-toolbar-group-left"></div>
+  <div class="p-toolbar-group-right">
+    <app-button
+      [color]="ButtonColor.PRIMARY"
+      [label]="'Add employee'"
+      (click)="add()"
+    ></app-button>
+  </div>
+</p-toolbar>
+<app-employees-list
+  [employees]="employees$ | async"
+  (modifyEvent)="onModify($event)"
+  (deleteEvent)="onDelete($event)"
+></app-employees-list>
+
+<p-dialog header="Employee form" [(visible)]="displayEmployee">
+  <app-employees-form
+    [form]="form"
+    [edited]="isEdited"
+    (formEvent)="onFormEmployees($event)"
+  ></app-employees-form>
+</p-dialog>

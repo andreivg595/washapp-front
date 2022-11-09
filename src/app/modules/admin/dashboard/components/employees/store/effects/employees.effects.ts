@@ -14,14 +14,14 @@ import {
   deleteEmployee,
   deleteEmployeeSuccess,
   deleteEmployeeFailure,
-} from '../actions/dashboard.actions';
+} from '../actions/employees.actions';
 import { EmployeeService } from '../../service/employee.service';
 import { AuthEffects } from 'src/app/core/auth/store/effects/auth.effects';
 import { ToastService } from 'src/app/shared/components/ui/toast/service/toast.service';
 import { ToastType } from 'src/app/shared/components/ui/toast/toast.component';
 
 @Injectable()
-export class DashboardEffects {
+export class EmployeesEffects {
   constructor(
     private readonly actions$: Actions,
     private employeeService: EmployeeService,
@@ -81,7 +81,6 @@ export class DashboardEffects {
         this.employeeService.deleteEmployee(id).pipe(
           map(() => deleteEmployeeSuccess({ id })),
           catchError((error) => {
-            this.authEffects.showError(error);
             return of(deleteEmployeeFailure({ error }));
           })
         )

@@ -6,17 +6,17 @@ import {
   fetchEmployeesSuccess,
   purge,
   updateEmployeeSuccess,
-} from '../actions/dashboard.actions';
+} from '../actions/employees.actions';
 
-export interface DashboardState {
-  employees: Employee[] | any; //FIXME: Error: src/app/modules/admin/dashboard/dashboard.container.html:4:28 - error TS2322: Type 'Employee[] | null' is not assignable to type 'Employee[]'.
+export interface EmployeesState {
+  employees: Employee[] | any; //FIXME: error TS2322: Type 'Employee[] | null' is not assignable to type 'Employee[]'.
 }
 
-const initialState: DashboardState = {
+const initialState: EmployeesState = {
   employees: [],
 };
 
-export const dashboardReducer = createReducer(
+export const employeesReducer = createReducer(
   initialState,
   on(fetchEmployeesSuccess, (state, { employees }) => ({
     ...state,
