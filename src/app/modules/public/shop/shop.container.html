@@ -1,1 +1,72 @@
-<p>shop works!</p>
+<div class="dashboard-container p-5">
+  <p-tabView>
+    <p-tabPanel header="Top">
+      <div class="grid">
+        <ng-container *ngFor="let product of topProducts$ | async">
+          <div class="col-12 md:col-6 lg:col-4 xl:col-3 px-3 py-5">
+            <app-shop-card
+              [product]="product"
+              (addProduct)="addProduct($event)"
+            ></app-shop-card>
+          </div>
+        </ng-container>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Bottom">
+      <ng-template pTemplate="content">
+        <div class="grid">
+          <ng-container *ngFor="let product of bottomProducts$ | async">
+            <div class="col-12 md:col-6 lg:col-4 xl:col-3 px-3 py-5">
+              <app-shop-card
+                [product]="product"
+                (addProduct)="addProduct($event)"
+              ></app-shop-card>
+            </div>
+          </ng-container>
+        </div>
+      </ng-template>
+    </p-tabPanel>
+    <p-tabPanel header="Accessories">
+      <ng-template pTemplate="content">
+        <div class="grid">
+          <ng-container *ngFor="let product of accessoriesProducts$ | async">
+            <div class="col-12 md:col-6 lg:col-4 xl:col-3 px-3 py-5">
+              <app-shop-card
+                [product]="product"
+                (addProduct)="addProduct($event)"
+              ></app-shop-card>
+            </div>
+          </ng-container>
+        </div>
+      </ng-template>
+    </p-tabPanel>
+    <p-tabPanel header="Packs">
+      <ng-template pTemplate="content">
+        <div class="grid">
+          <ng-container *ngFor="let product of packsProducts$ | async">
+            <div class="col-12 md:col-6 lg:col-4 xl:col-3 px-3 py-5">
+              <app-shop-card
+                [product]="product"
+                (addProduct)="addProduct($event)"
+              ></app-shop-card>
+            </div>
+          </ng-container>
+        </div>
+      </ng-template>
+    </p-tabPanel>
+    <p-tabPanel header="All">
+      <ng-template pTemplate="content">
+        <div class="grid">
+          <ng-container *ngFor="let product of products$ | async">
+            <div class="col-12 md:col-6 lg:col-4 xl:col-3 px-3 py-5">
+              <app-shop-card
+                [product]="product"
+                (addProduct)="addProduct($event)"
+              ></app-shop-card>
+            </div>
+          </ng-container>
+        </div>
+      </ng-template>
+    </p-tabPanel>
+  </p-tabView>
+</div>

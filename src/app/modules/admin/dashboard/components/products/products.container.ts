@@ -1,16 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
-import { ButtonColor } from 'src/app/shared/components/ui/button/button.component';
-import { Product } from './models/product.model';
 import {
   createProduct,
   deleteProduct,
   fetchProducts,
   purge,
   updateProduct,
-} from './store/actions/products.actions';
-import { getProducts } from './store/selectors/produts.selectors';
+} from 'src/app/core/store/actions/products.actions';
+import { getProducts } from 'src/app/core/store/selectors/produts.selectors';
+import { ButtonColor } from 'src/app/shared/components/ui/button/button.component';
+import { Product } from '../../../../../core/auth/models/product.model';
 
 @Component({
   selector: 'app-products',
@@ -32,7 +32,7 @@ export class ProductsContainer implements OnInit, OnDestroy {
     this.initForm();
   }
 
-  protected initForm(): void {
+  private initForm(): void {
     this.form = this.fb.group({
       id: [''],
       name: ['', Validators.required],

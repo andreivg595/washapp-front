@@ -2,6 +2,7 @@
   <ng-template pTemplate="start">
     <img
       src="assets/images/washing-machine.png"
+      alt="logo"
       class="navbar__logo cursor-pointer mr-2"
       (click)="home()"
     />
@@ -23,12 +24,12 @@
     </ng-container>
 
     <ng-container *ngIf="isAuthenticated$ | async">
-      <app-button
+      <!-- <app-button
         [color]="ButtonColor.SECONDARY"
         [label]="'Log out'"
         class="mr-2"
         (click)="logout()"
-      ></app-button>
+      ></app-button> -->
     </ng-container>
   </ng-template>
 </p-menubar>

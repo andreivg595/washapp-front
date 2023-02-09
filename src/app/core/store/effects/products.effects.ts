@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { ToastService } from 'src/app/shared/components/ui/toast/service/toast.service';
 import { ToastType } from 'src/app/shared/components/ui/toast/toast.component';
-import { ProductsService } from '../../service/products.service';
+import { ProductsService } from '../../auth/service/products.service';
 import {
   fetchProducts,
   fetchProductsSuccess,

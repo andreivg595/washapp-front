@@ -36,8 +36,6 @@ export class ProductsService {
 
   private getProductFormData(product: Product): FormData {
     const formData = new FormData();
-    console.log(product?.image?.length);
-    console.log(product.image);
     formData.append(
       'body',
       new Blob(
@@ -65,8 +63,6 @@ export class ProductsService {
         )
       : formData.append('imageFile', product.image); */
 
-    console.log(formData);
-    console.log(new File([product.image], `${product.name}-updated.png`));
     return formData;
   }
 

@@ -1,0 +1,38 @@
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="text-center">
+      <img
+        [src]="'data:image/jpeg;base64,' + product.image"
+        [alt]="product.name"
+        class="max-w-13rem"
+      />
+    </div>
+  </ng-template>
+  <div class="inline absolute font-bold">
+    {{ product.name }}
+  </div>
+  <div class="float-right font-medium">{{ product.price }} €</div>
+  <ng-template pTemplate="footer">
+    <div class="inline">
+      <p-inputNumber
+        [(ngModel)]="quantity"
+        [showButtons]="true"
+        buttonLayout="horizontal"
+        inputId="horizontal"
+        spinnerMode="horizontal"
+        [step]="1"
+        incrementButtonIcon="pi pi-plus"
+        decrementButtonIcon="pi pi-minus"
+        mode="decimal"
+      >
+      </p-inputNumber>
+    </div>
+    <div class="inline float-right">
+      <app-button
+        [color]="ButtonColor.PRIMARY"
+        [label]="'Add'"
+        (click)="add(product)"
+      ></app-button>
+    </div>
+  </ng-template>
+</p-card>

@@ -8,7 +8,27 @@
         }
     }
 
+    /* &__image {
+        clip-path: circle();
+        object-fit: cover;
+    } */
+
     &__title {
         display: contents;
+    }
+}
+
+::ng-deep .p-element ul li:last-child {
+    right: 0px;
+    position: absolute;
+    
+    ::ng-deep .p-submenu-list {
+        height: 8em;
+        width: 7.5em;
+        right: 0px;
+
+        ::ng-deep .p-menuitem {
+            width: 7.5em;
+        }
     }
 }

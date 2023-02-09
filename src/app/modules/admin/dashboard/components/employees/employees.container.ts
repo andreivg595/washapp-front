@@ -32,7 +32,7 @@ export class EmployeesContainer implements OnInit, OnDestroy {
     this.initForm();
   }
 
-  protected initForm(): void {
+  private initForm(): void {
     this.form = this.fb.group({
       id: [''],
       name: ['', Validators.required],

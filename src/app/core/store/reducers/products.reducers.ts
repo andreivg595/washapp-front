@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Product } from '../../models/product.model';
+import { Product } from '../../auth/models/product.model';
 import {
   createProductSuccess,
   deleteProductSuccess,
@@ -9,7 +9,7 @@ import {
 } from '../actions/products.actions';
 
 export interface ProductsState {
-  products: Product[] | any; //FIXME: error TS2322: Type 'Product[] | null' is not assignable to type 'Product[]'.
+  products: Product[];
 }
 
 const initialState: ProductsState = {
@@ -29,16 +29,12 @@ export const productsReducer = createReducer(
   on(updateProductSuccess, (state, { product }) => ({
     ...state,
     products: [
-      ...state.products.map((p: { id: number | undefined }) =>
-        p?.id === product.id ? product : p
-      ),
+      ...state.products.map((p) => (p?.id === product.id ? product : p)),
     ],
   })),
   on(deleteProductSuccess, (state, { id }) => ({
     ...state,
-    products: [
-      ...state.products.filter((p: { id: number | undefined }) => p?.id !== id),
-    ],
+    products: [...state.products.filter((p) => p?.id !== id)],
   })),
   on(purge, () => initialState)
 );

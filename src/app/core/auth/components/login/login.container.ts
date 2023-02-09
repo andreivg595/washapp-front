@@ -18,7 +18,7 @@ export class LoginContainer implements OnInit {
     this.initForm();
   }
 
-  protected initForm(): void {
+  private initForm(): void {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],

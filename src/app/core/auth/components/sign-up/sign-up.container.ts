@@ -18,7 +18,7 @@ export class SignUpContainer implements OnInit {
     this.initForm();
   }
 
-  protected initForm(): void {
+  private initForm(): void {
     this.form = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],

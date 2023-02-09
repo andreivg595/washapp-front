@@ -9,7 +9,7 @@ import {
 } from '../actions/employees.actions';
 
 export interface EmployeesState {
-  employees: Employee[] | any; //FIXME: error TS2322: Type 'Employee[] | null' is not assignable to type 'Employee[]'.
+  employees: Employee[];
 }
 
 const initialState: EmployeesState = {
@@ -29,18 +29,12 @@ export const employeesReducer = createReducer(
   on(updateEmployeeSuccess, (state, { employee }) => ({
     ...state,
     employees: [
-      ...state.employees.map((e: { id: number | undefined }) =>
-        e?.id === employee.id ? employee : e
-      ),
+      ...state.employees.map((e) => (e?.id === employee.id ? employee : e)),
     ],
   })),
   on(deleteEmployeeSuccess, (state, { id }) => ({
     ...state,
-    employees: [
-      ...state.employees.filter(
-        (e: { id: number | undefined }) => e?.id !== id
-      ),
-    ],
+    employees: [...state.employees.filter((e) => e?.id !== id)],
   })),
   on(purge, () => initialState)
 );
